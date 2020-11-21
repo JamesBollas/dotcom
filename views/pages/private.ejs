@@ -1,0 +1,24 @@
+<form method="post" action="/privatetestup" class="inline">
+    <input type="text" id="st" name="st">
+    <button>Send text</button>
+</form>
+
+<form enctype="multipart/form-data" method="post" action="/privatefileup" class="inline">
+    <input type="file" id="file" name="file">
+    <button>Send file</button>
+</form>
+
+<a href="/loginpage"> Login </a>
+<a href="/"> public_data </a>
+
+<ul>
+    <% tests.forEach((test) => { %>
+        <li>
+            <% if(test.link){ %>
+                <a href=<%= test.link %>><%= test.value %></a>
+            <% } else { %>
+                <%= test.value %>
+            <% } %>
+        </li>
+    <% }); %>
+</ul>

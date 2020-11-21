@@ -1,0 +1,41 @@
+{
+  "name": "dotcom",
+  "version": "0.0.1",
+  "description": "a thing",
+  "main": "server/start.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node server/index.js",
+    "start": "node build/index.js",
+    "clean": "rm -rf build && mkdir build",
+    "transpile": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run transpile",
+    "db": "NODE_ENV=test babel-node setup/setupDB.js",
+    "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
+    "test": "NODE_ENV=test mocha --require @babel/register ./test/**/*.test.js --bail --exit"
+  },
+  "author": "James Bollas",
+  "dependencies": {
+    "@babel/cli": "^7.12.7",
+    "@babel/plugin-proposal-export-default-from": "^7.12.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "fs": "0.0.1-security",
+    "greenlock-express": "^4.0.3",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
+    "nodemon": "^2.0.6",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.7",
+    "@babel/node": "^7.12.6",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/register": "^7.12.1",
+    "@babel/runtime": "^7.12.5"
+  }
+}
