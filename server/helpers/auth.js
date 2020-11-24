@@ -24,6 +24,20 @@ export const verify = (req, res, next) => {
     next();
 }
 
+export const user_details = (token) => {
+    var payload;
+    try{
+        payload = jwt.verify(token, jwtKey);
+        return payload;
+    }
+    catch(e){
+        if (e instanceof jwt.JsonWebTokenError){
+            return "no token";
+        }
+        return "bad token?";
+    }
+}
+
 export const signin = async (req, res) => {
     const name = req.body.username;
     const password = req.body.password;
@@ -51,7 +65,7 @@ export const signin = async (req, res) => {
     }
 }
 
-export const createuser = (name, password) => {
+export const createuser = async (name, password) => {
     const buf = crypto.randomBytes(256);
     const salt = buf.toString("hex");
     const hash = crypto.createHash("sha256").update(password).update(salt).digest("hex");

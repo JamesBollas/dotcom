@@ -1,3 +1,22 @@
+<HEAD>
+    <TITLE> James Bollas's Website!</TITLE>
+    <STYLE type="text/css">
+        .right{
+            float:right
+        }
+    </STYLE>
+</HEAD>
+<BODY>
+<span class="right">
+    <% if(user.name){ %>
+    Currently Logged in as: <%= user.name %>
+    <% } %>
+    <br>
+    <a href="/loginpage"> Login </a>
+    <br>
+    <a href="/logout"> Logout </a>
+</span>
+
 <form method="post" action="/privatetestup" class="inline">
     <input type="text" id="st" name="st">
     <button>Send text</button>
@@ -8,7 +27,6 @@
     <button>Send file</button>
 </form>
 
-<a href="/loginpage"> Login </a>
 <a href="/"> public_data </a>
 
 <ul>
@@ -19,6 +37,11 @@
             <% } else { %>
                 <%= test.value %>
             <% } %>
+            <% if(String(user_db._id) == String(test.uploader)){ %>
+                <a href="/deleteprivate/<%= String(test._id)%>"> Delete Entry</a>
+            <% } %>
         </li>
     <% }); %>
 </ul>
+
+</BODY>

@@ -1,4 +1,13 @@
+Login:
 <form method="post" action="/login" class="inline">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password</label>
+    <input type="text" id="password" name="password">
+    <button>Login</button>
+</form>
+Create User: (only already logged in users may create users)
+<form method="post" action="/createuser" class="inline">
     <label for="username">Username</label>
     <input type="text" id="username" name="username">
     <label for="password">Password</label>
